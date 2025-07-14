@@ -1,37 +1,25 @@
-# Get user input
+# daily_reminder.py
+
+# Prompt for a single task
 task = input("Enter your task: ")
 priority = input("Priority (high/medium/low): ").lower()
 time_bound = input("Is it time-bound? (yes/no): ").lower()
 
-# Process the task with match-case
+# Process the task based on priority and time sensitivity
 match priority:
     case "high":
-        if time_bound == "yes":
-            message = f"'{task}' is a high priority task that requires immediate attention today!"
-        else:
-            message = f"'{task}' is a high priority task."
+        priority_level = "high"
     case "medium":
-        if time_bound == "yes":
-            message = f"'{task}' is a medium priority task that requires immediate attention today!"
-        else:
-            message = f"'{task}' is a medium priority task."
+        priority_level = "medium"
     case "low":
-        if time_bound == "yes":
-            message = f"'{task}' is a low priority task that requires immediate attention today!"
-        else:
-            message = f"'{task}' is a low priority task."
+        priority_level = "low"
     case _:
-        message = "Invalid priority level entered. Please try again with high, medium, or low."
+        print("Invalid priority level. Defaulting to low priority.")
+        priority_level = "low"
 
-# Print the standardized reminder format
-if priority in ["high", "medium", "low"] and time_bound in ["yes", "no"]:
-    if time_bound == "yes":
-        print(f"\nReminder: {message}")
-    else:
-        print(f"\nNote: {message}")
+# Provide a customized reminder
+if time_bound == "yes":
+    print(f"Reminder: '{task}' is a {priority_level} priority task that requires immediate attention today!")
 else:
-    print(message)
+    print(f"Reminder: '{task}' is a {priority_level} priority task. Consider completing it when you have free time.")
 
-# Success message (keep this exactly as specified)
-print("\nWell done on completing this project! Let the world hear about this milestone achieved.")
-print("\n🚀 Click here to tweet! 🚀")
