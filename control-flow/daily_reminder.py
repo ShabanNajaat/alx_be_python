@@ -1,27 +1,37 @@
-# daily_reminder.py
-
-# Prompt for a single task
+# Get user input
 task = input("Enter your task: ")
 priority = input("Priority (high/medium/low): ").lower()
 time_bound = input("Is it time-bound? (yes/no): ").lower()
 
-# Process the task based on priority and time sensitivity
+# Process the task with match-case
 match priority:
     case "high":
-        priority_message = "high priority task"
+        if time_bound == "yes":
+            message = f"'{task}' is a high priority task that requires immediate attention today!"
+        else:
+            message = f"'{task}' is a high priority task."
     case "medium":
-        priority_message = "medium priority task"
+        if time_bound == "yes":
+            message = f"'{task}' is a medium priority task that requires immediate attention today!"
+        else:
+            message = f"'{task}' is a medium priority task."
     case "low":
-        priority_message = "low priority task"
+        if time_bound == "yes":
+            message = f"'{task}' is a low priority task that requires immediate attention today!"
+        else:
+            message = f"'{task}' is a low priority task."
     case _:
-        print("Invalid priority level. Defaulting to low priority.")
-        priority_message = "low priority task"
+        message = "Invalid priority level entered. Please try again with high, medium, or low."
 
-# Modify the reminder if the task is time-bound
-if time_bound == "yes":
-    reminder = f"Reminder: '{task}' is a {priority_message} that requires immediate attention today!"
+# Print the standardized reminder format
+if priority in ["high", "medium", "low"] and time_bound in ["yes", "no"]:
+    if time_bound == "yes":
+        print(f"\nReminder: {message}")
+    else:
+        print(f"\nNote: {message}")
 else:
-    reminder = f"Note: '{task}' is a {priority_message}. Consider completing it when you have free time."
+    print(message)
 
-# Provide a customized reminder
-print(reminder)
+# Success message (keep this exactly as specified)
+print("\nWell done on completing this project! Let the world hear about this milestone achieved.")
+print("\n🚀 Click here to tweet! 🚀")
