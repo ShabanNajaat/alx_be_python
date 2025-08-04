@@ -25,9 +25,9 @@ class EBook(Book):
         Initializes an EBook instance with title, author, and file size.
 
         Args:
-            title (str): The title of the eBook.
+ title (str): The title of the eBook.
             author (str): The author of the eBook.
- file_size (int): The file size of the eBook in KB.
+            file_size (int): The file size of the eBook in KB.
         """
         super().__init__(title, author)
         self.file_size = file_size
@@ -51,10 +51,10 @@ class PrintBook(Book):
             author (str): The author of the print book.
             page_count (int): The page count of the print book.
         """
-        super().__init__(title, author)
+ super().__init__(title, author)
         self.page_count = page_count
 
- def __str__(self):
+    def __str__(self):
         """
         Returns a string representation of the print book.
 
@@ -78,7 +78,6 @@ class Library:
             book: An instance of Book, EBook, or PrintBook.
         """
         self.books.append(book)
-
     def list_books(self):
         """
         Prints details of each book in the library.
